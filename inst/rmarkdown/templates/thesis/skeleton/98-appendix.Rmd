@@ -1,0 +1,27 @@
+`r if(knitr:::is_latex_output()) '\\bapendices'`
+
+<!--
+If you feel it necessary to include an appendix, it goes here.
+-->
+
+
+# DESCRIÇÃO 1 {#appendix-a}
+
+Textos elaborados pelo autor, a fim de completar a sua argumentação. Deve ser 
+precedido da palavra APÊNDICE, identificada por letras maiúsculas consecutivas, 
+travessão e pelo respectivo título. Utilizam-se letras maiúsculas dobradas quando
+esgotadas as letras do alfabeto.
+
+**No arquivo Rmd principal**
+
+```{r ref.label='include_packages', results='hide', echo = TRUE}
+```
+
+**No Capítulo \@ref(desenvolvimento):**
+
+```{r ref.label='media-concentracao-urbana', results='hide', echo = TRUE}
+```
+
+# FOR FUN {#appendix-b}
+
+`r if(knitr:::is_latex_output()) '\\eapendices'`

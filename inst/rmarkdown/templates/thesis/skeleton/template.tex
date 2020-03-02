@@ -30,7 +30,26 @@
 	]{abntex2}
 
 \usepackage{setup/ufscthesisA4-alf}
-\addbibresource{bib/thesis.bib} % Seus arquivos de referências
+%\addbibresource{bib/thesis.bib} % Seus arquivos de referências
+
+\usepackage[table]{xcolor}
+\let\newfloat\undefined
+\usepackage{floatrow}
+\floatsetup[table]{capposition=top}
+\floatsetup[figure]{capposition=top}
+
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+\newcommand{\bcenter}{\begin{center}}
+\newcommand{\ecenter}{\end{center}}
+
+\newcommand{\bapendices}{\begin{apendicesenv}}
+\newcommand{\eapendices}{\end{apendicesenv}}
+
+\newcommand{\banexos}{\begin{anexosenv}}
+\newcommand{\eanexos}{\end{anexosenv}}
 
 % ---
 % Filtering and Mapping Bibliographies
@@ -108,7 +127,7 @@ $endif$
 % FIXME Substituir '[mestrado/doutorado]' pelo nivel adequado.
 \nivel{$level$}
 % FIXME Substituir 'Programa de Pós-Graduação em XXXXXX' pela curso adequado.
-\programa{$program$}
+\programa{$department$}
 % FIXME Substituir 'Campus XXXXXX ou Centro de XXXXXX' pelo campus ou centro adequado.
 \centro{$division$}
 \preambulo
@@ -147,6 +166,7 @@ $endif$
 
 % Declaração das siglas
 \siglalista{ABNT}{Associação Brasileira de Normas Técnicas}
+\siglalista{Bacen}{Banco Central do Brasil}
 
 % Declaração dos simbolos
 \simbololista{C}{\ensuremath{C}}{Circunferência de um círculo}
@@ -191,7 +211,198 @@ $endif$
 % Capa, folha de rosto, ficha bibliografica, errata, folha de apróvação
 % Dedicatória, agradecimentos, epígrafe, resumos, listas
 % ---
-\input{beforetext/beforetext}
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+\imprimirfolhaderosto*
+% ---
+
+% ---
+% Inserir a ficha bibliografica
+% ---
+% http://ficha.bu.ufsc.br/
+\begin{fichacatalografica}
+	\includepdf{Ficha_Catalografica.pdf}
+\end{fichacatalografica}
+% ---
+
+% ---
+% Inserir folha de aprovação
+% ---
+\begin{folhadeaprovacao}
+	\OnehalfSpacing
+	\centering
+	\imprimirautor\\%
+	\vspace*{10pt}		
+	\textbf{\imprimirtitulo}%
+	\ifnotempty{\imprimirsubtitulo}{:~\imprimirsubtitulo}\\%
+	%		\vspace*{31.5pt}%3\baselineskip
+	\vspace*{\baselineskip}
+	%\begin{minipage}{\textwidth}
+	O presente trabalho em nível de \imprimirnivel~foi avaliado e aprovado por banca examinadora composta pelos seguintes membros:\\
+	%\end{minipage}%
+	\vspace*{\baselineskip}
+  $for(examiner)$
+  $examiner.title$ $examiner.name$, $examiner.degree$\\
+  $examiner.institution$ - $examiner.inst_short$\\
+  \vspace*{\baselineskip}
+  $endfor$
+  
+	\vspace*{2\baselineskip}
+	\begin{minipage}{\textwidth}
+		Certificamos que esta é a \textbf{versão original e final} do trabalho de conclusão que foi julgado adequado para obtenção do título de \imprimirformacao.\\
+	\end{minipage}
+	%    \vspace{-0.7cm}
+	\vspace*{\fill}
+	\assinatura{\OnehalfSpacing $coordinator$ \\ Coordenação do Programa de Pós-Graduação}
+	\vspace*{\fill}
+	\assinatura{\OnehalfSpacing\imprimirorientador \\ \imprimirorientadorRotulo}
+	%	\ifnotempty{\imprimircoorientador}{
+	%	\assinatura{\imprimircoorientador \\ \imprimircoorientadorRotulo \\
+	%		\imprimirinstituicao~--~\imprimirinstituicaosigla}
+	%	}
+	% \newpage
+	\vspace*{\fill}
+	\imprimirlocal, \imprimirano.
+\end{folhadeaprovacao}
+% ---
+
+% ---
+% Dedicatória
+% ---
+\begin{dedicatoria}
+	\vspace*{\fill}
+	\noindent
+	\begin{adjustwidth*}{}{5.5cm} 
+		\raggedleft       
+		$dedication$
+	\end{adjustwidth*}
+\end{dedicatoria}
+% ---
+
+% ---
+% Agradecimentos
+% ---
+\begin{agradecimentos}
+	$thanks$
+\end{agradecimentos}
+% ---
+
+% ---
+% Epígrafe
+% ---
+\begin{epigrafe}
+	\vspace*{\fill}
+	\begin{flushright}
+		\textit{``Texto da Epígrafe.\\
+			Citação relativa ao tema do trabalho.\\
+			É opcional. A epígrafe pode também aparecer\\
+			na abertura de cada seção ou capítulo.\\
+			Deve ser elaborada de acordo com a NBR 10520.''\\
+			(SOBRENOME do autor da epígrafe, ano)}
+	\end{flushright}
+\end{epigrafe}
+% ---
+
+% ---
+% RESUMOS
+% ---
+
+% resumo em português
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+\begin{resumo}
+	\SingleSpacing
+  $abstract$ 
+  
+  \textbf{Palavras-chave}: 
+  $for(palavras-chave)$
+  $palavras-chave$
+  $endfor$
+\end{resumo}
+
+% resumo em inglês
+\begin{resumo}[Abstract]
+	\SingleSpacing
+	\begin{otherlanguage*}{english}
+		$foreignabstract$
+		\textbf{Keywords}: Keyword 1. Keyword 2. Keyword 3.
+	\end{otherlanguage*}
+\end{resumo}
+
+%% resumo em francês 
+%\begin{resumo}[Résumé]
+% \begin{otherlanguage*}{french}
+%    Il s'agit d'un résumé en français.
+% 
+%   \textbf{Mots-clés}: latex. abntex. publication de textes.
+% \end{otherlanguage*}
+%\end{resumo}
+%
+%% resumo em espanhol
+%\begin{resumo}[Resumen]
+% \begin{otherlanguage*}{spanish}
+%   Este es el resumen en español.
+%  
+%   \textbf{Palabras clave}: latex. abntex. publicación de textos.
+% \end{otherlanguage*}
+%\end{resumo}
+%% ---
+
+{%hidelinks
+	\hypersetup{hidelinks}
+	% ---
+	% inserir lista de ilustrações
+	% ---
+	\pdfbookmark[0]{\listfigurename}{lof}
+	\listoffigures*
+	\cleardoublepage
+	% ---
+	
+	% ---
+	% inserir lista de quadros
+	% ---
+	\pdfbookmark[0]{\listofquadrosname}{loq}
+	\listofquadros*
+	\cleardoublepage
+	% ---
+	
+	% ---
+	% inserir lista de tabelas
+	% ---
+	\pdfbookmark[0]{\listtablename}{lot}
+	\listoftables*
+	\cleardoublepage
+	% ---
+	
+	% ---
+	% inserir lista de abreviaturas e siglas (devem ser declarados no preambulo)
+	% ---
+	\imprimirlistadesiglas
+	% ---
+	
+	% ---
+	% inserir lista de símbolos (devem ser declarados no preambulo)
+	% ---
+	\imprimirlistadesimbolos
+	% ---
+	
+	% ---
+	% inserir o sumario
+	% ---
+	\pdfbookmark[0]{\contentsname}{toc}
+	\tableofcontents*
+	\cleardoublepage
+	
+}%hidelinks
+% ---
+
 % ---
 
 % ----------------------------------------------------------
@@ -199,43 +410,7 @@ $endif$
 % ----------------------------------------------------------
 \textual
 
-% ---
-% 1 - Introdução
-% ---
-\include{chapters/1-chapter}
-% ---
-
-% ---
-% 2 - Capítulo 2
-% ---
-\include{chapters/2-chapter}
-% ---
-
-% ---
-% 3 - Capítulo 3
-% ---
-\include{chapters/3-chapter}
-% ---
-
-% ---
-% 4 - Conclusão
-% ---
-%\phantompart
-\include{chapters/4-chapter}
-% ---
-
-% ----------------------------------------------------------
-% ELEMENTOS PÓS-TEXTUAIS
-% ----------------------------------------------------------
-%\postextual
-% ----------------------------------------------------------
-
-% ----------------------------------------------------------
-% Referências bibliográficas
-% ----------------------------------------------------------
-\begingroup
-    \SingleSpacing\printbibliography[title=REFERÊNCIAS]
-\endgroup
+$body$
 
 % ----------------------------------------------------------
 % Glossário
@@ -244,32 +419,6 @@ $endif$
 % Consulte o manual da classe abntex2 para orientações sobre o glossário.
 %
 %\glossary
-
-% ----------------------------------------------------------
-% Apêndices
-% ----------------------------------------------------------
-
-% ---
-% Inicia os apêndices
-% ---
-\begin{apendicesenv}
-%	\partapendices*
-	\input{aftertext/apendice_a}
-\end{apendicesenv}
-% ---
-
-
-% ----------------------------------------------------------
-% Anexos
-% ----------------------------------------------------------
-
-% ---
-% Inicia os anexos
-% ---
-\begin{anexosenv}
-%	\partanexos*
-	\input{aftertext/anexo_a}
-\end{anexosenv}
 
 %---------------------------------------------------------------------
 % INDICE REMISSIVO

@@ -1,0 +1,30 @@
+<!--
+The bib chunk below must go last in this document according to how R Markdown renders.  More info is at http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html
+-->
+
+<!-- 
+If you'd like to change the name of the bibliography to something else,
+delete "References" and replace it.
+-->
+
+# REFERÊNCIAS {-}
+<!--
+This manually sets the header for this unnumbered chapter.
+-->
+\markboth{Referências}{REFERÊNCIAS}
+
+
+<div id="refs"></div>
+
+<!--
+To create a hanging indent and spacing between entries.  These three lines may need to be removed for styles that don't require the hanging indent.
+-->
+
+<!--
+This is just for testing with more citations for the bibliography at the end.  Add other entries into the list here if you'd like them to appear in the bibliography even if they weren't explicitly cited in the document.
+-->
+
+---
+nocite: | 
+  @angel2000, @angel2001, @angel2002a, @NBR6023:2002, @NBR6027:2012, @NBR6028:2003, @NBR10520:2002, @ibge1993, @ibge2016, @deussen2000, @hipr1997, @goochandgooch2001, @goochandgooch2001a, @hertzmann2000, @jain1989, @Molina1994, @noble2002, @reedweb2007, @russ1995, @salisbury1997, @savitch2001, @wong1999
+...

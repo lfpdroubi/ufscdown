@@ -1,0 +1,27 @@
+`r if(knitr:::is_latex_output()) '\\banexos'`
+
+<!--
+If you feel it necessary to include an appendix, it goes here.
+-->
+
+
+# DESCRIÇÃO 1
+
+São documentos não elaborados pelo autor que servem como fundamentação (mapas, 
+leis, estatutos). Deve ser precedido da palavra ANEXO, identificada por letras
+maiúsculas consecutivas, travessão e pelo respectivo título. Utilizam-se letras 
+maiúsculas dobradas quando esgotadas as letras do alfabeto.
+
+**No arquivo Rmd principal**
+
+```{r ref.label='include_packages', results='hide', echo = TRUE}
+```
+
+**No Capítulo \@ref(ref-labels):**
+
+```{r ref.label='media-concentracao-urbana', results='hide', echo = TRUE}
+```
+
+# for Fun
+
+`r if(knitr:::is_latex_output()) '\\eanexos'`

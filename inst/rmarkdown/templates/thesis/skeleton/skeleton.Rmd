@@ -1,14 +1,21 @@
 ---
-author: 'Your R. Name'
-date: 'May 20xx'
-institution: 'Reed College'
-division: 'Mathematics and Natural Sciences'
-advisor: 'Advisor F. Name'
+author: 'Luiz F. P. Droubi'
+date_year: '2020'
+date_month: '03'
+date_day: '31'
+institution: 'Universidade Federal de Santa Catarina'
+inst_short: 'UFSC'
+division: 'CTC - CENTRO TECNOLÓGICO'
+advisor: 'Norberto Hochheim'
 # If you have more two advisors, un-silence line 7
 #altadvisor: 'Your Other Advisor'
-department: 'Mathematics'
-degree: 'Bachelor of Arts'
-title: 'My Final College Paper'
+center: 'CTC - CENTRO TECNOLÓGICO'
+department: 'PROGRAMA DE PÓS-GRADUAÇÃO EM ENGENHARIA DE TRANSPORTES E GESTÃO TERRITORIAL'
+degree: 'Mestre em Engenharia de Transportes e Gestão Territorial'
+level: 'mestrado'
+doc_type: 'dissertação'
+title: 'Mercado Imobiliário e Macroeconomia'
+subtitle: 'Qualificação'
 knit: "bookdown::render_book"
 site: bookdown::bookdown_site
 output: 
@@ -26,7 +33,7 @@ abstract: |
 acknowledgements: |
   I want to thank a few people.
 dedication: |
-  You can have a dedication here if you wish. 
+  A Bibi. 
 preface: |
   This is an example of a thesis setup to use the reed thesis document class
   (for LaTeX) and the R bookdown package, in general.

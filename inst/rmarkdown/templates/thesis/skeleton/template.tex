@@ -1,212 +1,281 @@
-% This is the Reed College LaTeX thesis template. Most of the work
-% for the document class was done by Sam Noble (SN), as well as this
-% template. Later comments etc. by Ben Salzberg (BTS). Additional
-% restructuring and APA support by Jess Youngberg (JY).
-% Your comments and suggestions are more than welcome; please email
-% them to cus@reed.edu
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% Modelo UFSC para Trabalhos Academicos (tese de doutorado, dissertação de
+% mestrado) utilizando a classe abntex2
 %
-% See http://web.reed.edu/cis/help/latex.html for help. There are a
-% great bunch of help pages there, with notes on
-% getting started, bibtex, etc. Go there and read it if you're not
-% already familiar with LaTeX.
-%
-% Any line that starts with a percent symbol is a comment.
-% They won't show up in the document, and are useful for notes
-% to yourself and explaining commands.
-% Commenting also removes a line from the document;
-% very handy for troubleshooting problems. -BTS
+% Autor: Alisson Lopes Furlani
+% 	Modificações:
+%	- 27/08/2019: Alisson L. Furlani, add pacote 'glossaries' para listas
+%   - 30/10/2019: Alisson L. Furlani, adjusted some spacing errors and changed math fonts
+%   - 17/01/2019: Alisson L. Furlani, updated certification page
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
 
-% As far as I know, this follows the requirements laid out in
-% the 2002-2003 Senior Handbook. Ask a librarian to check the
-% document before binding. -SN
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão no anverso. Oposto a twoside
+	a4paper,			% tamanho do papel.
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	%french,				% idioma adicional para hifenização
+	%spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
 
-%%
-%% Preamble
-%%
-% \documentclass{<something>} must begin each LaTeX document
-\documentclass[12pt,twoside]{reedthesis}
-% Packages are extensions to the basic LaTeX functions. Whatever you
-% want to typeset, there is probably a package out there for it.
-% Chemistry (chemtex), screenplays, you name it.
-% Check out CTAN to see: http://www.ctan.org/
-%%
-\usepackage{graphicx,latexsym}
-\usepackage{amsmath}
-\usepackage{amssymb,amsthm}
-\usepackage{longtable,booktabs,setspace}
-\usepackage{chemarr} %% Useful for one reaction arrow, useless if you're not a chem major
-\usepackage[hyphens]{url}
-% Added by CII
-\usepackage{hyperref}
-\usepackage{lmodern}
-\usepackage{float}
-\floatplacement{figure}{H}
-% End of CII addition
-\usepackage{rotating}
+\usepackage{setup/ufscthesisA4-alf}
+\addbibresource{bib/thesis.bib} % Seus arquivos de referências
 
-% Next line commented out by CII
-%%% \usepackage{natbib}
-% Comment out the natbib line above and uncomment the following two lines to use the new
-% biblatex-chicago style, for Chicago A. Also make some changes at the end where the
-% bibliography is included.
-%\usepackage{biblatex-chicago}
-%\bibliography{thesis}
+% ---
+% Filtering and Mapping Bibliographies
+% ---
+\DeclareSourcemap{
+	\maps[datatype=bibtex]{
+		% remove fields that are always useless
+		\map{
+			\step[fieldset=abstract, null]
+			\step[fieldset=pagetotal, null]
+		}
+		% remove URLs for types that are primarily printed
+%		\map{
+%			\pernottype{software}
+%			\pernottype{online}
+%			\pernottype{report}
+%			\pernottype{techreport}
+%			\pernottype{standard}
+%			\pernottype{manual}
+%			\pernottype{misc}
+%			\step[fieldset=url, null]
+%			\step[fieldset=urldate, null]
+%		}
+		\map{
+			\pertype{inproceedings}
+			% remove mostly redundant conference information
+			\step[fieldset=venue, null]
+			\step[fieldset=eventdate, null]
+			\step[fieldset=eventtitle, null]
+			% do not show ISBN for proceedings
+			\step[fieldset=isbn, null]
+			% Citavi bug
+			\step[fieldset=volume, null]
+		}
+	}
+}
+% ---
 
-
-% Added by CII (Thanks, Hadley!)
-% Use ref for internal links
-\renewcommand{\hyperref}[2][???]{\autoref{#1}}
-\def\chapterautorefname{Chapter}
-\def\sectionautorefname{Section}
-\def\subsectionautorefname{Subsection}
-% End of CII addition
-
-% Added by CII
-\usepackage{caption}
-\captionsetup{width=5in}
-% End of CII addition
-
-% \usepackage{times} % other fonts are available like times, bookman, charter, palatino
-
-% Syntax highlighting #22
-$if(highlighting-macros)$
-  $highlighting-macros$
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+% FIXME Substituir 'Nome completo do autor' pelo seu nome.
+\autor{$author$}
+% FIXME Substituir 'Título do trabalho' pelo título da trabalho.
+\titulo{$title$}
+% FIXME Substituir 'Subtítulo (se houver)' pelo subtítulo da trabalho.
+% Caso não tenha substítulo, comente a linha a seguir.
+$if(subtitle)$
+  \subtitulo{$subtitle$}
 $endif$
-
-% To pass between YAML and LaTeX the dollar signs are added by CII
-\title{$title$}
-\author{$author$}
-% The month and year that you submit your FINAL draft TO THE LIBRARY (May or December)
-\date{$date$}
-\division{$division$}
-\advisor{$advisor$}
-\institution{$institution$}
-\degree{$degree$}
-%If you have two advisors for some reason, you can use the following
-% Uncommented out by CII
+% FIXME Substituir 'XXXXXX' pelo nome do seu
+% orientador.
+\orientador{$advisor$}
+% FIXME Se for orientado por uma mulher, comente a linha acima e descomente a linha a seguir.
+% \orientador[Orientadora]{Nome da orientadora, Dra.}
+% FIXME Substituir 'XXXXXX' pelo nome do seu
+% coorientador. Caso não tenha coorientador, comente a linha a seguir.
 $if(altadvisor)$
-\altadvisor{$altadvisor$}
+\coorientador{$altadvisor$}
 $endif$
-% End of CII addition
+% FIXME Se for coorientado por uma mulher, comente a linha acima e descomente a linha a seguir.
+% \coorientador[Coorientadora]{XXXXXX, Dra.}
+% FIXME Substituir '[ano]' pelo ano (ano) em que seu trabalho foi defendido.
+\ano{$date_year$}
+% FIXME Substituir '[dia] de [mês] de [ano]' pela data em que ocorreu sua defesa.
+\data{$date_day$ de $date_month$ de $date_year$}
+% FIXME Substituir 'Local' pela cidade em que ocorreu sua defesa.
+\local{$local$}
+\instituicaosigla{$inst_short$}
+\instituicao{$institution$}
+% FIXME Substituir 'Dissertação/Tese' pelo tipo de trabalho (Tese, Dissertação).
+\tipotrabalho{$doc_type$}
+% FIXME Substituir '[mestre/doutor] em XXXXXX' pela grau adequado.
+\formacao{$degree$}
+% FIXME Substituir '[mestrado/doutorado]' pelo nivel adequado.
+\nivel{$level$}
+% FIXME Substituir 'Programa de Pós-Graduação em XXXXXX' pela curso adequado.
+\programa{$program$}
+% FIXME Substituir 'Campus XXXXXX ou Centro de XXXXXX' pelo campus ou centro adequado.
+\centro{$division$}
+\preambulo
+{%
+\imprimirtipotrabalho~submetida~ao~\imprimirprograma~da~\imprimirinstituicao~para~a~obtenção~do~título~de~\imprimirformacao.
+}
+% ---
 
-%%% Remember to use the correct department!
-\department{$department$}
-% if you're writing a thesis in an interdisciplinary major,
-% uncomment the line below and change the text as appropriate.
-% check the Senior Handbook if unsure.
-%\thedivisionof{The Established Interdisciplinary Committee for}
-% if you want the approval page to say "Approved for the Committee",
-% uncomment the next line
-%\approvedforthe{Committee}
-
-% Added by CII
-%%% Copied from knitr
-%% maxwidth is the original width if it's less than linewidth
-%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+% ---
+% Configurações de aparência do PDF final
+% ---
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+% informações do PDF
 \makeatletter
-\def\maxwidth{ %
-  \ifdim\Gin@nat@width>\linewidth
-    \linewidth
-  \else
-    \Gin@nat@width
-  \fi
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title},
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={ufsc, latex, abntex2},
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=black,%blue,          	% color of internal links
+    	citecolor=black,%blue,        		% color of links to bibliography
+    	filecolor=black,%magenta,      		% color of file links
+		urlcolor=black,%blue,
+		bookmarksdepth=4
 }
 \makeatother
+% ---
 
-\renewcommand{\contentsname}{Table of Contents}
-% End of CII addition
+% ---
+% compila a lista de abreviaturas e siglas e a lista de símbolos
+% ---
 
-\setlength{\parskip}{0pt}
+% Declaração das siglas
+\siglalista{ABNT}{Associação Brasileira de Normas Técnicas}
 
-% Added by CII
-$if(space_between_paragraphs)$
-  %\setlength{\parskip}{\baselineskip}
-  \usepackage[parfill]{parskip}
-$endif$
+% Declaração dos simbolos
+\simbololista{C}{\ensuremath{C}}{Circunferência de um círculo}
+\simbololista{pi}{\ensuremath{\pi}}{Número pi}
+\simbololista{r}{\ensuremath{r}}{Raio de um círculo}
+\simbololista{A}{\ensuremath{A}}{Área de um círculo}
 
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% compila a lista de abreviaturas e siglas e a lista de símbolos
+\makenoidxglossaries
 
-\Acknowledgements{
-$acknowledgements$
-}
+% ---
 
-\Dedication{
-$dedication$
-}
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
 
-\Preface{
-$preface$
-}
-
-\Abstract{
-$abstract$
-}
-
-$for(header-includes)$
-	$header-includes$
-$endfor$
-% End of CII addition
-%%
-%% End Preamble
-%%
-%
-
+% ----
+% Início do documento
+% ----
 \begin{document}
 
-% Everything below added by CII
-$if(title)$
-  \maketitle
-$endif$
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
 
-\frontmatter % this stuff will be roman-numbered
-\pagestyle{empty} % this removes page numbers from the frontmatter
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing
 
-$if(acknowledgements)$
-  \begin{acknowledgements}
-    $acknowledgements$
-  \end{acknowledgements}
-$endif$
+% Espaçamento 1.5 entre linhas
+\OnehalfSpacing
 
-$if(preface)$
-  \begin{preface}
-    $preface$
-  \end{preface}
-$endif$
+% Corrige justificação
+%\sloppy
 
-$if(toc)$
-  \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
-  \setcounter{tocdepth}{$toc-depth$}
-  \tableofcontents
-$endif$
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual %a macro \pretextual é acionado automaticamente no início de \begin{document}
+% ---
+% Capa, folha de rosto, ficha bibliografica, errata, folha de apróvação
+% Dedicatória, agradecimentos, epígrafe, resumos, listas
+% ---
+\input{beforetext/beforetext}
+% ---
 
-$if(lot)$
-  \listoftables
-$endif$
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
 
-$if(lof)$
-  \listoffigures
-$endif$
+% ---
+% 1 - Introdução
+% ---
+\include{chapters/1-chapter}
+% ---
 
-$if(abstract)$
-  \begin{abstract}
-    $abstract$
-  \end{abstract}
-$endif$
+% ---
+% 2 - Capítulo 2
+% ---
+\include{chapters/2-chapter}
+% ---
 
-$if(dedication)$
-  \begin{dedication}
-    $dedication$
-  \end{dedication}
-$endif$
+% ---
+% 3 - Capítulo 3
+% ---
+\include{chapters/3-chapter}
+% ---
 
-\mainmatter % here the regular arabic numbering starts
-\pagestyle{fancyplain} % turns page numbering back on
+% ---
+% 4 - Conclusão
+% ---
+%\phantompart
+\include{chapters/4-chapter}
+% ---
 
-$body$
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+%\postextual
+% ----------------------------------------------------------
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\begingroup
+    \SingleSpacing\printbibliography[title=REFERÊNCIAS]
+\endgroup
+
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+%
+% Consulte o manual da classe abntex2 para orientações sobre o glossário.
+%
+%\glossary
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+
+% ---
+% Inicia os apêndices
+% ---
+\begin{apendicesenv}
+%	\partapendices*
+	\input{aftertext/apendice_a}
+\end{apendicesenv}
+% ---
 
 
-% Index?
+% ----------------------------------------------------------
+% Anexos
+% ----------------------------------------------------------
+
+% ---
+% Inicia os anexos
+% ---
+\begin{anexosenv}
+%	\partanexos*
+	\input{aftertext/anexo_a}
+\end{anexosenv}
+
+%---------------------------------------------------------------------
+% INDICE REMISSIVO
+%---------------------------------------------------------------------
+%\phantompart
+%\printindex
+%---------------------------------------------------------------------
 
 \end{document}
-

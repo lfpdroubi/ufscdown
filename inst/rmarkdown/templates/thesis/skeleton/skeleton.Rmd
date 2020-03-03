@@ -27,8 +27,8 @@ department: |
 degree: 'Mestre em Engenharia de Transportes e Gestão Territorial'
 level: 'mestrado'
 doc_type: 'Dissertação'
-title: 'Mercado Imobiliário e Macroeconomia'
-subtitle: 'Qualificação'
+title: 'TÍTULO'
+subtitle: 'SUBTÍTULO'
 knit: "bookdown::render_book"
 site: bookdown::bookdown_site
 output: 

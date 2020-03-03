@@ -7,7 +7,7 @@ Deve-se inserir texto entre as seções.
 
 É a parte principal e mais extensa do trabalho. Deve apresentar a fundamentação 
 teórica, a metodologia, os resultados e a discussão. Divide-se em seções e 
-subseções conforme a NBR 6024 \cite{NBR6024:2012}.
+subseções conforme a NBR 6024 \cite{NBR6024:2012} - ver figura \@ref(fig:imagem).
 
 Quanto à sua estrutura e projeto gráfico, segue as recomendações da \gls{ABNT} 
 para preparação de trabalhos acadêmicos, a NBR 14724, de 2011 [@NBR14724:2011].
@@ -142,7 +142,8 @@ kable(dados, format = "latex", booktabs = TRUE,
                    bold = TRUE) %>% 
   column_spec(4:6, width = "1.5cm") %>% 
   row_spec(0, bold = TRUE) %>% 
-  footnote(general = c("PIB em bilhões de reais.", "Fonte: @ibge2016"))
+  footnote(general = c("PIB em bilhões de reais.", "Fonte: IBGE (2016)"),
+           general_title = "Notas:")
 ```
 
 Outra maneira, ainda, para tabelas mais simples, é inserí-las no formato Pandoc 

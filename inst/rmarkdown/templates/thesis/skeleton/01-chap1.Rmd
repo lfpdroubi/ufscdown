@@ -31,11 +31,6 @@ as dissertações e teses não serão mais entregues em formato impresso na
 Biblioteca Universitária. Consulte o Repositório Institucional da UFSC ou sua 
 Secretaria de Pós Graduação sobre os procedimentos para a entrega.
 
-%\nocite{NBR6023:2002}
-%\nocite{NBR6027:2012}
-%\nocite{NBR6028:2003}
-%\nocite{NBR10520:2002}
-
 ## Objetivos
 
 Nas seções abaixo estão descritos o objetivo geral e os objetivos 

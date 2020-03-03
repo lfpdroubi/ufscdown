@@ -16,7 +16,6 @@ Depends:
     dplyr,
     ggplot2,
     bookdown,
-    thesisdown,
     knitr
 License: MIT
 Encoding: UTF-8

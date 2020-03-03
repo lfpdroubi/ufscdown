@@ -14,7 +14,7 @@
 #'   template
 #' @examples
 #' \dontrun{
-#'  output: thesisdown::thesis_pdf
+#'  output: ufscdown::thesis_pdf
 #' }
 thesis_pdf <- function(toc = TRUE, toc_depth = 3, highlight = "default", ...){
 

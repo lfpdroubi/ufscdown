@@ -104,6 +104,8 @@ O código pode ser visto no Apêndice \@ref(appendix-a).
 
 ```{r media-concentracao-urbana, message = FALSE, warning = FALSE, echo = FALSE}
 library(knitr)
+if(!require(kableExtra))
+  install.packages("kableExtra", repos = "http://cran.rstudio.com")
 library(kableExtra)
 kable(dados, format = "latex", booktabs = TRUE,
       caption = "Médias concentrações urbanas 2010-2011.",

@@ -32,10 +32,10 @@ subtitle: 'Qualificação'
 knit: "bookdown::render_book"
 site: bookdown::bookdown_site
 output: 
-  thesisdown::thesis_pdf: default
-#  thesisdown::thesis_gitbook: default
-#  thesisdown::thesis_word: default
-#  thesisdown::thesis_epub: default
+  ufscdown::thesis_pdf: default
+#  ufscdown::thesis_gitbook: default
+#  ufscdown::thesis_word: default
+#  ufscdown::thesis_epub: default
 # If you are creating a PDF you'll need to write your preliminary content (e.g., 
 # abstract, acknowledgements) here or use code similar to line 43-44 for the 
 # .RMD files. If you are NOT producing a PDF, you can delete or silence lines 

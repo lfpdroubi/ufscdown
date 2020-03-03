@@ -124,7 +124,8 @@ dados <- data.frame(Cidade = c("Ji-Paraná (RO)", "Parintins (AM)",
                     UL = c(3082, 683, 5187, 686))
 ```
 
-O código de geração desta tabela pode ser visto no Apêndice \@ref(appendix-a).
+O código de geração desta tabela (\@ref(Tab:media-concentracao-urbana)) pode ser 
+visto no Apêndice \@ref(appendix-a).
 
 ```{r media-concentracao-urbana, message = FALSE, warning = FALSE, echo = FALSE}
 library(knitr)

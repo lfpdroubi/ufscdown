@@ -99,7 +99,7 @@ index.Rmd file and then knit again.
 if(!require(remotes))
   install.packages("remotes", repos = "http://cran.rstudio.com")
 if(!require(ufscdown))
-  devtools::install_github("lfpdroubi/ufscdown")
+  remotes::install_github("lfpdroubi/ufscdown")
 library(ufscdown)
 ```
 

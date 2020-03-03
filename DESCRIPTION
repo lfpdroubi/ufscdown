@@ -12,7 +12,7 @@ Description: Using the bookdown package and LaTeX and Word thesis templates from
 Maintainer: Luiz Droubi <lfpdroubi@gmail.com>
 Depends:
     R (>= 3.2.0),
-    devtools,
+    remotes,
     dplyr,
     ggplot2,
     bookdown,

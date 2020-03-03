@@ -87,39 +87,9 @@ Exemplos, \autoref{eq:Eq_1} e \autoref{eq:Eq_2}.
 
 ##### Exemplo tabela
 
-De acordo com @ibge1993, tabela é uma forma não discursiva de apresentar informações em que os números representam a informação central. 
+De acordo com @ibge1993, tabela é uma forma não discursiva de apresentar 
+informações em que os números representam a informação central. 
 Ver \autoref{tab:Tab_1}.
-
-```{r}
-dados <- data.frame(Cidade = c("Ji-Paraná (RO)", "Parintins (AM)", 
-                               "Boa Vista (RR)", "Bragança (PA)"),
-                    Populacao = c(116610, 102033, 298215, 113227),
-                    Pop_Brasil = c(116610, 102033, 298215, 113227),
-                    PIB = c(1.686, 0.675, 4.823, 0.452),
-                    Empresas = c(2734, 634, 4852, 654),
-                    UL = c(3082, 683, 5187, 686))
-```
-
-O código pode ser visto no Apêndice \@ref(appendix-a).
-
-```{r media-concentracao-urbana, message = FALSE, warning = FALSE, echo = FALSE}
-library(knitr)
-if(!require(kableExtra))
-  install.packages("kableExtra", repos = "http://cran.rstudio.com")
-library(kableExtra)
-kable(dados, format = "latex", booktabs = TRUE,
-      caption = "Médias concentrações urbanas 2010-2011.",
-      col.names = c("Nome", "Total", "No Brasil", "Produto Interno Bruto - PIB", 
-                    "Número de Empresas", "Número de unidades locais"),
-      format.args = list(decimal.mark = ",", big.mark = " ")
-    ) %>%
-  kable_styling(latex_options = "striped") %>% 
-  add_header_above(c("Média Concentração Urbana", "População" = 2), 
-                   bold = TRUE) %>% 
-  column_spec(4:6, width = "1.5cm") %>% 
-  row_spec(0, bold = TRUE) %>% 
-  footnote(general = "PIB em bilhões de reais. ")
-```
 
 \begin{table}[htb]
 	\ABNTEXfontereduzida
@@ -137,6 +107,47 @@ kable(dados, format = "latex", booktabs = TRUE,
 \bcenter
 Fonte: @ibge2016
 \ecenter
+
+As tabelas podem ser escritas em código latex, como acima.
+
+Porém, é recomendável utilizar o \proglang{R} para produzí-las, através dos pacotes
+\pkg{knitr} e \pkg{kableExtra}. Para isto é necessário inserir os dados no 
+\proglang{R}, como abaixo, ou através da leitura de um arquivo de dados.
+
+```{r}
+dados <- data.frame(Cidade = c("Ji-Paraná (RO)", "Parintins (AM)", 
+                               "Boa Vista (RR)", "Bragança (PA)"),
+                    Populacao = c(116610, 102033, 298215, 113227),
+                    Pop_Brasil = c(116610, 102033, 298215, 113227),
+                    PIB = c(1.686, 0.675, 4.823, 0.452),
+                    Empresas = c(2734, 634, 4852, 654),
+                    UL = c(3082, 683, 5187, 686))
+```
+
+O código de geração desta tabela pode ser visto no Apêndice \@ref(appendix-a).
+
+```{r media-concentracao-urbana, message = FALSE, warning = FALSE, echo = FALSE}
+library(knitr)
+if(!require(kableExtra))
+  install.packages("kableExtra", repos = "http://cran.rstudio.com")
+library(kableExtra)
+kable(dados, format = "latex", booktabs = TRUE,
+      caption = "Médias concentrações urbanas 2010-2011.",
+      col.names = c("Nome", "Total", "No Brasil", "Produto Interno Bruto - PIB", 
+                    "Número de Empresas", "Número de unidades locais"),
+      format.args = list(decimal.mark = ",", big.mark = " ")
+    ) %>%
+  kable_styling(latex_options = "striped") %>% 
+  add_header_above(c("Média Concentração Urbana", "População" = 2), 
+                   bold = TRUE) %>% 
+  column_spec(4:6, width = "1.5cm") %>% 
+  row_spec(0, bold = TRUE) %>% 
+  footnote(general = c("PIB em bilhões de reais.", "Fonte: @ibge2016"))
+```
+
+Outra maneira, ainda, para tabelas mais simples, é inserí-las no formato Pandoc 
+(ver a [documentação do pandoc](https://pandoc.org/MANUAL.html#tables) para mais 
+detalhes).
 
 ----------------------------------------------------------------------------------
   Factors                    Correlation between Parents & Child      Inherited

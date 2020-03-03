@@ -6,8 +6,9 @@
 % Autor: Alisson Lopes Furlani
 % 	Modificações:
 %	- 27/08/2019: Alisson L. Furlani, add pacote 'glossaries' para listas
-%   - 30/10/2019: Alisson L. Furlani, adjusted some spacing errors and changed math fonts
-%   - 17/01/2019: Alisson L. Furlani, updated certification page
+% - 30/10/2019: Alisson L. Furlani, adjusted some spacing errors and changed math fonts
+% - 17/01/2019: Alisson L. Furlani, updated certification page
+% - 03/03/2020: Luiz F. P. Droubi, change file to be used as a template with R.
 % ------------------------------------------------------------------------
 % ------------------------------------------------------------------------
 
@@ -165,14 +166,10 @@ $endif$
 % ---
 
 % Declaração das siglas
-\siglalista{ABNT}{Associação Brasileira de Normas Técnicas}
-\siglalista{Bacen}{Banco Central do Brasil}
+\include{lista_siglas}
 
 % Declaração dos simbolos
-\simbololista{C}{\ensuremath{C}}{Circunferência de um círculo}
-\simbololista{pi}{\ensuremath{\pi}}{Número pi}
-\simbololista{r}{\ensuremath{r}}{Raio de um círculo}
-\simbololista{A}{\ensuremath{A}}{Área de um círculo}
+\include{lista_simbolos}
 
 % compila a lista de abreviaturas e siglas e a lista de símbolos
 \makenoidxglossaries
@@ -301,12 +298,7 @@ $endif$
 \begin{epigrafe}
 	\vspace*{\fill}
 	\begin{flushright}
-		\textit{``Texto da Epígrafe.\\
-			Citação relativa ao tema do trabalho.\\
-			É opcional. A epígrafe pode também aparecer\\
-			na abertura de cada seção ou capítulo.\\
-			Deve ser elaborada de acordo com a NBR 10520.''\\
-			(SOBRENOME do autor da epígrafe, ano)}
+		\textit{$epigrafe$}
 	\end{flushright}
 \end{epigrafe}
 % ---
@@ -323,7 +315,7 @@ $endif$
   
   \textbf{Palavras-chave}: 
   $for(palavras-chave)$
-  $palavras-chave$
+  $palavras-chave$.
   $endfor$
 \end{resumo}
 
@@ -332,7 +324,11 @@ $endif$
 	\SingleSpacing
 	\begin{otherlanguage*}{english}
 		$foreignabstract$
-		\textbf{Keywords}: Keyword 1. Keyword 2. Keyword 3.
+		
+		\textbf{Keywords}:
+	  $for(keyword)$
+    $keyword$.
+    $endfor$
 	\end{otherlanguage*}
 \end{resumo}
 

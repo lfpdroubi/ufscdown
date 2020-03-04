@@ -34,11 +34,11 @@ sempre em páginas ímpares, quando o trabalho for impresso. Deixar um espaço
 entre o título da seção/subseção e o texto e entre o texto e o título da subseção.
 
 
-No \autoref{qua:Quadro_1} estão as especificações para a formatação do texto.
+No Quadro \@ref(qua:Quadro-1) estão as especificações para a formatação do texto.
 
 \begin{quadro}[htb]
 	\centering
-	\caption{\label{qua:Quadro_1}Formatação do texto.}	
+	\caption{\label{qua:Quadro-1}Formatação do texto.}	
 	\begin{tabular}{|l|p{11cm}|}
 		\hline
 		\textbf{Formato do papel} & A4.\\ \hline
@@ -75,25 +75,27 @@ As equações e fórmulas devem ser destacadas no texto para facilitar a leitura
 Para numerá-las, usar algarismos arábicos entre parênteses e alinhados à direita. 
 Pode-se adotar uma entrelinha maior do que a usada no texto \cite{NBR14724:2011}.
 
-Exemplos, \autoref{eq:Eq_1} e \autoref{eq:Eq_2}.
+Exemplos, equação \@ref(eq:eq-1) e equação \@ref(eq:eq-2).
 
-\begin{equation}\label{eq:Eq_1}
-\gls{C} = 2 \gls{pi} \gls{r}
+\begin{equation}
+  \gls{C} = 2 \gls{pi} \gls{r}
+  (\#eq:eq-1)
 \end{equation}
 
-\begin{equation}\label{eq:Eq_2}
-\gls{A} = \gls{pi} \gls{r}^2
+\begin{equation}
+  \gls{A} = \gls{pi} \gls{r}^2
+  (\#eq:eq-2)
 \end{equation}
 
 ##### Exemplo tabela
 
 De acordo com @ibge1993, tabela é uma forma não discursiva de apresentar 
 informações em que os números representam a informação central. 
-Ver \autoref{tab:Tab_1}.
+Ver tabela \@ref(tab:tab-1).
 
 \begin{table}[htb]
 	\ABNTEXfontereduzida
-	\caption{\label{tab:Tab_1}Médias concentrações urbanas 2010-2011.}
+	\caption{\label{tab:tab-1}Médias concentrações urbanas 2010-2011.}
 	\begin{tabular}{@{}p{3.0cm}p{1.5cm}p{2cm}p{2.5cm}p{2.5cm}p{2.5cm}@{}}
 		\toprule
 		\textbf{Média concentração urbana} & \multicolumn{2}{l}{\textbf{População}} & \textbf{Produto Interno Bruto – PIB (bilhões R\$)} & \textbf{Número de empresas} & \textbf{Número de unidades locais} \\ \midrule
@@ -147,9 +149,9 @@ kable(dados, format = "latex", booktabs = TRUE,
            general_title = "Notas:")
 ```
 
-Outra maneira, ainda, para tabelas mais simples, é inserí-las no formato Pandoc 
-(ver a [documentação do pandoc](https://pandoc.org/MANUAL.html#tables) para mais 
-detalhes).
+Outra maneira, ainda, para tabelas mais simples, como a tabela \@ref(tab:inher),
+é inserí-las no formato Pandoc (ver a 
+[documentação do pandoc](https://pandoc.org/MANUAL.html#tables) para mais detalhes).
 
 ----------------------------------------------------------------------------------
   Factors                    Correlation between Parents & Child      Inherited
@@ -165,3 +167,7 @@ detalhes).
   Occupational Prestige                     0.21                        Slight
 ------------------------- ----------------------------------------- --------------
 Table: (\#tab:inher) Correlation of Inheritance Factors for Parents and Child 
+
+\bcenter
+Fonte: do Autor.
+\ecenter

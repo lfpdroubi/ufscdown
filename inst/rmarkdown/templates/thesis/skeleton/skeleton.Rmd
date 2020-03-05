@@ -93,8 +93,11 @@ index.Rmd file and then knit again.
 -->
 
 ```{r include_packages, include = FALSE}
-# This chunk ensures that the thesisdown package is
-# installed and loaded. This thesisdown package includes
+knitr::opts_chunk$set(echo = FALSE, cache = FALSE, message=FALSE, warning = FALSE, 
+                      fig.ext='png', fig.align='center', fig.path = "images/",
+                      fig.pos = "H", dev = "png", dpi = 600, out.width = "70%")
+# This chunk ensures that the ufscdown package is
+# installed and loaded. This ufscdown package includes
 # the template files for the thesis.
 if(!require(remotes))
   install.packages("remotes", repos = "http://cran.rstudio.com")
@@ -118,7 +121,27 @@ they are handled in the YAML above differently for the PDF version.
 "Chapter 0." You can also use {-} for no numbers
 on chapters.
 -->
+# Introdução {#intro}
 
-```{r setup, include=FALSE}
-knit_hooks$set(warning =  FALSE, message = FALSE)
-```
+
+As orientações aqui apresentadas são baseadas em um conjunto de normas
+elaboradas pela \gls{ABNT}. Além das normas técnicas, a Biblioteca também
+elaborou uma série de tutoriais, guias, *templates* os quais estão disponíveis 
+em seu site, no endereço \url{http://portal.bu.ufsc.br/normalizacao/}.
+
+Paralelamente ao uso deste *template* recomenda-se que seja utilizado o
+**Tutorial de Trabalhos Acadêmicos** (disponível neste 
+[link](\url{https://repositorio.ufsc.br/handle/123456789/180829)) e/ou que o 
+discente **participe das capacitações oferecidas da Biblioteca Universitária da 
+UFSC**.
+
+Este *template* está configurado apenas para a impressão utilizando o
+anverso das folhas, caso você queira imprimir usando a frente e o verso,
+acrescente a opção *openright* e mude de *oneside* para
+*twoside* nas configurações da classe *abntex2* no início do
+arquivo principal *main.tex* [@abntex2classe].
+
+Conforme a [Resolução NORMATIVA nº 46/2019/CPG](https://repositorio.ufsc.br/bitstream/handle/123456789/197121/RN46.2019.pdf?sequence=1&isAllowed=y)
+as dissertações e teses não serão mais entregues em formato impresso na 
+Biblioteca Universitária. Consulte o Repositório Institucional da UFSC ou sua 
+Secretaria de Pós Graduação sobre os procedimentos para a entrega.

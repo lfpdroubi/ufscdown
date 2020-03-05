@@ -6,31 +6,6 @@ This is for including Chapter 1.  Notice that it's also good practice to name yo
 The {#rmd-basics} text after the chapter declaration will allow us to link throughout the document back to the beginning of Chapter 1.  These labels will automatically be generated (if not specified) by changing the spaces to hyphens and capital letters to lowercase.  Look for the reference to this label at the beginning of Chapter 2.
 -->
 
-# Introdução {#intro}
-
-
-As orientações aqui apresentadas são baseadas em um conjunto de normas
-elaboradas pela \gls{ABNT}. Além das normas técnicas, a Biblioteca também
-elaborou uma série de tutoriais, guias, *templates* os quais estão disponíveis 
-em seu site, no endereço \url{http://portal.bu.ufsc.br/normalizacao/}.
-
-Paralelamente ao uso deste *template* recomenda-se que seja utilizado o
-**Tutorial de Trabalhos Acadêmicos** (disponível neste 
-[link](\url{https://repositorio.ufsc.br/handle/123456789/180829)) e/ou que o 
-discente **participe das capacitações oferecidas da Biblioteca Universitária da 
-UFSC**.
-
-Este *template* está configurado apenas para a impressão utilizando o
-anverso das folhas, caso você queira imprimir usando a frente e o verso,
-acrescente a opção *openright* e mude de *oneside* para
-*twoside* nas configurações da classe *abntex2* no início do
-arquivo principal *main.tex* [@abntex2classe].
-
-Conforme a [Resolução NORMATIVA nº 46/2019/CPG](https://repositorio.ufsc.br/bitstream/handle/123456789/197121/RN46.2019.pdf?sequence=1&isAllowed=y)
-as dissertações e teses não serão mais entregues em formato impresso na 
-Biblioteca Universitária. Consulte o Repositório Institucional da UFSC ou sua 
-Secretaria de Pós Graduação sobre os procedimentos para a entrega.
-
 ## Objetivos
 
 Nas seções abaixo estão descritos o objetivo geral e os objetivos 

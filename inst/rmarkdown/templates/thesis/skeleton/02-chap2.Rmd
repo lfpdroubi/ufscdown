@@ -7,10 +7,10 @@ Deve-se inserir texto entre as seções.
 
 É a parte principal e mais extensa do trabalho. Deve apresentar a fundamentação 
 teórica, a metodologia, os resultados e a discussão. Divide-se em seções e 
-subseções conforme a NBR 6024 \cite{NBR6024:2012} - ver figura \@ref(fig:imagem).
+subseções conforme a NBR 6024 [-@NBR6024:2012] - ver figura \@ref(fig:imagem).
 
 Quanto à sua estrutura e projeto gráfico, segue as recomendações da \gls{ABNT} 
-para preparação de trabalhos acadêmicos, a NBR 14724, de 2011 [@NBR14724:2011].
+para preparação de trabalhos acadêmicos, a NBR 14724 [-@NBR14724:2011].
 
 ```{r imagem, fig.cap = "Elementos do trabalho acadêmico.", fig.pos = "H", fig.align='center'}
 knitr::include_graphics("images/imagem.pdf")
@@ -66,14 +66,14 @@ obrigatório, mesmo que seja produção do próprio autor), legenda, notas e out
 informações necessárias à sua compreensão (se houver). A ilustração deve ser 
 citada no texto e inserida o mais próximo possível do texto a que se refere. 
 >
-> --- \cite[p. 11]{NBR14724:2011}.
+> --- [@NBR14724:2011, 11].
 
 
 #### Equações e fórmulas
 
 As equações e fórmulas devem ser destacadas no texto para facilitar a leitura.
 Para numerá-las, usar algarismos arábicos entre parênteses e alinhados à direita. 
-Pode-se adotar uma entrelinha maior do que a usada no texto \cite{NBR14724:2011}.
+Pode-se adotar uma entrelinha maior do que a usada no texto [@NBR14724:2011].
 
 Exemplos, equação \@ref(eq:eq-1) e equação \@ref(eq:eq-2).
 

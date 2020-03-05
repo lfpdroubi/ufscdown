@@ -1,7 +1,84 @@
 # Seção
 
-
 Este *template* contém algumas seções criadas na tentativa de facilitar seu uso.
 No entanto, não há um limite máximo ou mínimo de seção a ser utilizado no 
 trabalho. Cabe a cada autor definir a quantidade que melhor atenda à sua 
 necessidade.  
+
+Para criar figuras com o \proglang{R}, pode-se seguir o padrão do código
+abaixo, utilizado para produzir as imagens da figura \@ref(fig:anscombe):
+
+```{r anscombe, fig.cap = "O quarteto de Anscombe.", out.width = "49%", fig.show='hold', echo = TRUE}
+data(anscombe)
+plot(y1~x1, data = anscombe)
+abline(lm(y1~x1, data = anscombe))
+plot(y2~x2, data = anscombe)
+abline(lm(y2~x2, data = anscombe))
+plot(y3~x3, data = anscombe)
+abline(lm(y3~x3, data = anscombe))
+plot(y4~x4, data = anscombe)
+abline(lm(y4~x4, data = anscombe))
+``` 
+\bcenter
+Fonte: do Autor.
+\ecenter
+
+```{r}
+# To create bib citations to R packages, proceed like below:
+knitr::write_bib(c("ggplot2"), "bib/pkgs.bib", width = 78)
+```
+
+Ou utilizando o pacote \pkg{ggplot2} [-@R-ggplot2], obtendo-se a figura \@ref(fig:anscombe2).
+
+```{r, echo = TRUE}
+library(ggplot2)
+p1 <- ggplot(anscombe, aes(x = x1, y = y1)) +
+  geom_point(color = "darkorange", size = 1.5) +
+  scale_x_continuous(breaks = seq(0,20,2)) +
+  scale_y_continuous(breaks = seq(0,12,2)) +
+  expand_limits(x = 0, y = 0) +
+  labs(x = "x1", y = "y1",
+       title = "Dataset 1" ) +
+  geom_smooth(method = "lm", se = FALSE)
+
+p2 <- ggplot(anscombe, aes(x = x2, y = y2)) +
+  geom_point(color = "darkorange", size = 1.5) +
+  scale_x_continuous(breaks = seq(0,20,2)) +
+  scale_y_continuous(breaks = seq(0,12,2)) +
+  expand_limits(x = 0, y = 0) +
+  labs(x = "x2", y = "y2",
+       title = "Dataset 2" ) +
+  geom_smooth(method = "lm", se = FALSE)
+
+p3 <- ggplot(anscombe, aes(x = x3, y = y3)) +
+  geom_point(color = "darkorange", size = 1.5) +
+  scale_x_continuous(breaks = seq(0,20,2)) +
+  scale_y_continuous(breaks = seq(0,12,2)) +
+  expand_limits(x = 0, y = 0) +
+  labs(x = "x3", y = "y3",
+       title = "Dataset 3" ) +
+  geom_smooth(method = "lm", se = FALSE)
+
+p4 <- ggplot(anscombe, aes(x = x4, y = y4)) +
+  geom_point(color = "darkorange", size = 1.5) +
+  scale_x_continuous(breaks = seq(0,20,2)) +
+  scale_y_continuous(breaks = seq(0,12,2)) +
+  expand_limits(x = 0, y = 0) +
+  labs(x = "x4", y = "y4",
+       title = "Dataset 4" ) +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+
+
+```{r anscombe2, fig.cap = "O Quarteto de Anscombe", out.width="100%"}
+if(!require(cowplot))
+  install.packages("cowplot", repos = "http://cran.rstudio.com")
+library(cowplot)
+theme_set(theme_cowplot(12))
+plot_grid(p1, p2, p3, p4, align = "v", ncol = 2, 
+             labels = list("A", "B", "C", "D"))
+```
+\bcenter
+Fonte: do Autor.
+\ecenter

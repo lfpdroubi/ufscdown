@@ -1,0 +1,51 @@
+# Resultados
+
+```{r install-appraiseR}
+remotes::install_github("lfpdroubi/appraiseR")
+```
+
+```{r load-data}
+library(appraiseR)
+data("centro_2015")
+centro_2015 <- centro_2015@data
+centro_2015$padrao <- as.numeric(centro_2015$padrao)
+```
+
+```{r fits}
+fit <- lm(log(valor) ~ area_total + quartos + garagens + suites +
+            log(dist_b_mar) + I(padrao^-1), data = centro_2015, subset = -c(31, 39))
+fit2 <- update(fit, . ~ . - suites)
+```
+
+```{r install-stargazer}
+if(!require(stargazer))
+  install.packages("stargazer", repos = "http://cran.rstudio.com")
+knitr::write_bib(c("stargazer"), "bib/pkgs.bib", width = 78)
+```
+
+
+O pacote \pkg{stargazer} [-@R-stargazer] é um dos melhores para a elaboração de tabelas de 
+coeficientes e estatísticas de modelos, conforme pode ser  visto na tabela 
+\@ref(tab:fits):
+
+```{r fits-table, results='asis'}
+library(stargazer)
+stargazer(fit, fit2,
+  ci = TRUE,
+  ci.level = .90,
+  type = type,
+  header = FALSE,
+  label = "tab:fits",
+  title = "Comparação entre diferentes quantis da regressão quantílica.",
+  report = "vcst*",
+  single.row = TRUE,
+  star.cutoffs = c(0.30, 0.20, 0.10),
+  intercept.bottom = FALSE,
+  decimal.mark = ",",
+  digit.separator = ".",
+  digits= 2,
+  notes = c("Intervalos de Confiança de 90\\% para os regressores.",
+            "Fonte: do Autor.")
+          )
+```
+

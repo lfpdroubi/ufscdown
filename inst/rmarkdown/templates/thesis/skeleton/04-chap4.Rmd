@@ -20,7 +20,6 @@ fit2 <- update(fit, . ~ . - suites)
 ```{r install-stargazer}
 if(!require(stargazer))
   install.packages("stargazer", repos = "http://cran.rstudio.com")
-knitr::write_bib(c("stargazer"), "bib/pkgs.bib", width = 78)
 ```
 
 

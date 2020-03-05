@@ -1,4 +1,4 @@
-# Seção
+# Plots
 
 Este *template* contém algumas seções criadas na tentativa de facilitar seu uso.
 No entanto, não há um limite máximo ou mínimo de seção a ser utilizado no 

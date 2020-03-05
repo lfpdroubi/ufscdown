@@ -23,14 +23,14 @@ abline(lm(y4~x4, data = anscombe))
 Fonte: do Autor.
 \ecenter
 
-```{r}
-# To create bib citations to R packages, proceed like below:
-knitr::write_bib(c("ggplot2"), "bib/pkgs.bib", width = 78)
+```{r install-ggplot2}
+if(!require(ggplot2))
+  install.packages("ggplot2", repos = "http://cran.rstudio.com")
 ```
 
 Ou utilizando o pacote \pkg{ggplot2} [-@R-ggplot2], obtendo-se a figura \@ref(fig:anscombe2).
 
-```{r, echo = TRUE}
+```{r ggplots, echo = TRUE}
 library(ggplot2)
 p1 <- ggplot(anscombe, aes(x = x1, y = y1)) +
   geom_point(color = "darkorange", size = 1.5) +

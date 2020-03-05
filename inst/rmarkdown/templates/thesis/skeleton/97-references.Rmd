@@ -8,6 +8,12 @@ delete "References" and replace it.
 -->
 
 # REFERÊNCIAS {-}
+
+```{r}
+# To create bib citations to R packages, proceed like below:
+knitr::write_bib(c("ggplot2", "stargazer"), "bib/pkgs.bib", width = 78)
+```
+
 <!--
 This manually sets the header for this unnumbered chapter.
 -->

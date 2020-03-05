@@ -22,7 +22,9 @@ Imports:
   bookdown,
   knitr
 Suggests:
+  tinytex,
   kableExtra,
-  cowplot
+  cowplot,
+  stargazer
 SystemRequirements: pandoc (>= 1.18) - http://pandoc.org
 RoxygenNote: 7.0.2

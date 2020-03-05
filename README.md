@@ -77,8 +77,10 @@ shown below instead to install the package.
 ```r
 if (!require("remotes")) 
   install.packages("remotes", repos = "http://cran.rstudio.org")
-remotes::install_github("rstudio/bookdown")
 remotes::install_github("lfpdroubi/ufscdown")
+# or, if you wish, install all the suggested packages:
+remotes::install_github("lfpdroubi/ufscdown", 
+                        dependencies = c("Imports", "Suggests"))
 ```
 
 Note that you may need to restart RStudio at this point for the following dialog 

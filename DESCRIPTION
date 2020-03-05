@@ -11,14 +11,18 @@ Description: Using the bookdown package and LaTeX and Word thesis templates from
     and analyses as well.
 Maintainer: Luiz Droubi <lfpdroubi@gmail.com>
 Depends:
-    R (>= 3.2.0),
-    remotes,
-    dplyr,
-    ggplot2,
-    bookdown,
-    knitr
+    R (>= 3.2.0)
 License: MIT
 Encoding: UTF-8
 LazyData: true
+Imports:
+  remotes,
+  dplyr,
+  ggplot2,
+  bookdown,
+  knitr
+Suggests:
+  kableExtra,
+  cowplot
 SystemRequirements: pandoc (>= 1.18) - http://pandoc.org
 RoxygenNote: 7.0.2

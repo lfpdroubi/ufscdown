@@ -57,10 +57,6 @@ epigrafe: |
 # Specify the location of the bibliography below
 bibliography: ["bib/thesis.bib", "bib/references.bib", "bib/pkgs.bib"]
 link-citations: yes
-linkcolor: red
-urlcolor: magenta
-citecolor: blue
-biblio-style: abnt
 dedication: |
   Este trabalho é dedicado aos meus colegas de classe e aos meus queridos pais.
 thanks: |
@@ -98,6 +94,7 @@ knitr::opts_chunk$set(echo = FALSE, cache = FALSE, message=FALSE,
                       warning = FALSE, fig.ext='png', fig.align='center', 
                       fig.path = "images/", fig.pos = "H", dev = "png", 
                       dpi = 600, out.width = "70%")
+type <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 # This chunk ensures that the ufscdown package is
 # installed and loaded. This ufscdown package includes
 # the template files for the thesis.

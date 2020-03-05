@@ -16,11 +16,7 @@ License: MIT
 Encoding: UTF-8
 LazyData: true
 Imports:
-  remotes,
-  dplyr,
-  ggplot2,
-  bookdown,
-  knitr
+  bookdown
 Suggests:
   tinytex,
   kableExtra,

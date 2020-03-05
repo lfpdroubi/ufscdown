@@ -80,7 +80,7 @@ if (!require("remotes"))
 remotes::install_github("lfpdroubi/ufscdown")
 # or, if you wish, install all the suggested packages:
 remotes::install_github("lfpdroubi/ufscdown", 
-                        dependencies = c("Imports", "Suggests"))
+                        dependencies = TRUE)
 ```
 
 Note that you may need to restart RStudio at this point for the following dialog 

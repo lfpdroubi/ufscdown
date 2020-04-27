@@ -7,12 +7,26 @@ If you'd like to change the name of the bibliography to something else,
 delete "References" and replace it.
 -->
 
-# REFERÊNCIAS {-}
-
 ```{r}
 # To create bib citations to R packages, proceed like below:
 knitr::write_bib(c("ggplot2", "stargazer"), "bib/pkgs.bib", width = 78)
 ```
+
+
+\postextual
+
+\begingroup
+
+  \printbibliography[title=REFERÊNCIAS]
+  
+\endgroup
+
+```{r}
+if (knitr::is_html_output()){
+  '# REFERÊNCIAS {-}'  
+}
+```
+
 
 <!--
 This manually sets the header for this unnumbered chapter.

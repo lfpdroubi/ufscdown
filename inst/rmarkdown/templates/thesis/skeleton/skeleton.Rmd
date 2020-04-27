@@ -32,7 +32,9 @@ subtitle: 'SUBTÍTULO'
 knit: "bookdown::render_book"
 site: bookdown::bookdown_site
 output: 
-  ufscdown::thesis_pdf: default
+  ufscdown::thesis_pdf: 
+    citation_package: biblatex
+    bib_engine: biber
 #  ufscdown::thesis_gitbook: default
 #  ufscdown::thesis_word: default
 #  ufscdown::thesis_epub: default

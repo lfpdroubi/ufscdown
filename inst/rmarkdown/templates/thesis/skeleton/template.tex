@@ -31,7 +31,10 @@
 	]{abntex2}
 
 \usepackage{setup/ufscthesisA4-alf}
-%\addbibresource{bib/thesis.bib} % Seus arquivos de referências
+
+$for(bibliography)$
+\addbibresource{$bibliography$}
+$endfor$
 
 \usepackage[table]{xcolor}
 \let\newfloat\undefined

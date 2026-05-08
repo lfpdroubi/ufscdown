@@ -1,20 +1,17 @@
 # Resultados
 
-```{r install-appraiseR}
-remotes::install_github("lfpdroubi/appraiseR")
+```{r install-wolldridge}
+install.packages("wooldridge")
 ```
 
 ```{r load-data}
-library(appraiseR)
-data("centro_2015")
-centro_2015 <- centro_2015@data
-centro_2015$padrao <- as.numeric(centro_2015$padrao)
+library(wooldridge)
+data("hprice1")
 ```
 
 ```{r fits}
-fit <- lm(log(valor) ~ area_total + quartos + garagens + suites +
-            log(dist_b_mar) + I(padrao^-1), data = centro_2015, subset = -c(31, 39))
-fit2 <- update(fit, . ~ . - suites)
+fit <- lm(price ~ sqrft, data = hprice1)
+fit2 <- update(fit, . ~ . + lotsize)
 ```
 
 ```{r install-stargazer}

@@ -1,7 +1,8 @@
 # Resultados
 
 ```{r install-wolldridge}
-install.packages("wooldridge")
+if (!require(wooldridge))
+  install.packages("wooldridge", repos = "http://cran.rstudio.com")
 ```
 
 ```{r load-data}
